@@ -1,5 +1,7 @@
 import sys
 import os
+from PIL import Image
+import numpy as np
 
 
 def parse_arg():
@@ -13,3 +15,6 @@ def parse_arg():
 		print("File does not exists")
 		sys.exit(1)
 	return sys.argv[1], sys.argv[2]
+
+def get_image(filename):
+	return np.array(Image.open(filename))

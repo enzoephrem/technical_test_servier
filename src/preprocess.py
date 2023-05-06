@@ -1,6 +1,7 @@
 # devide dataset into training testing and validation
 import os
 import random
+import util
 import numpy as np
 from sklearn.model_selection import train_test_split
 
@@ -16,7 +17,7 @@ def load_data(test_size=0.2, random_seed=42):
 	for phase_index, phase in enumerate(phases):
 		phase_folder = os.path.join(folder, phase)
 		for f in os.scandir(phase_folder):
-			data.append(f.name)
+			data.append(util.get_image(f.name))
 			tmp_label = [0] * len(phases)
 			tmp_label[phase_index] = 1
 			labels.append(tmp_label)
